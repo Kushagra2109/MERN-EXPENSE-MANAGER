@@ -9,6 +9,8 @@ import Dashboard from './components/Dashboard.jsx';
 import Overview from './components/Overview.jsx';
 import Contact from './components/Contact.jsx';
 import Help from './components/Help.jsx';
+import {Provider} from 'react-redux'
+import { store } from './redux/store.js';
 
 const router = createBrowserRouter([
     {
@@ -24,7 +26,8 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  
+  <Provider store={store}>
     <RouterProvider router={router}/>
+  </Provider>
   
 )

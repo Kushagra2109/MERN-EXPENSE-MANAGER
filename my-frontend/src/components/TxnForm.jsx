@@ -2,20 +2,24 @@ import React from 'react'
 import {useForm } from 'react-hook-form';
 import { useState , useEffect} from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { addTxn, updateTxn } from '../redux/txnSlice/txnSlice';
+import { useDispatch , useSelector } from 'react-redux';
 
-function TxnForm(props) {
+function TxnForm() {
+    const toBeEdited = useSelector((state) => state.transactions.toBeEditedTxn);
+    const dispatch = useDispatch();
+    
+
     const { register, handleSubmit, setValue, reset ,formState: { errors } } = useForm({ defaultValues: { txnType: "EXPENSE"} });
     const onSubmit = (formValues) => {
-        // console.log('formValues', formValues)
         if(formValues.id){
-            props.performEdit(formValues);
-            
+            dispatch(updateTxn(formValues));
         }else{
-            props.insertTxn({...formValues , id : uuidv4()});
-            
+            dispatch(addTxn({...formValues , id : uuidv4()}));
         }
         reset({txnType : "EXPENSE" , amount : "" , category : "" , desc: "" , id : ""})
     }
+
 
     const [txnType, settxnType] = useState('EXPENSE');
     const toggleTxnType = () => {
@@ -24,14 +28,12 @@ function TxnForm(props) {
         setValue("txnType", newValue);
     }
 
-    // const [flagForEdit , setFlagForEdit] = useState(false);
-    const [category, setcategory] = useState(null);
     useEffect(() => {
-        if(props.toBeEdited){
-            reset(props.toBeEdited)
-            settxnType(props.toBeEdited.txnType);
+        if(toBeEdited){
+            reset(toBeEdited)
+            settxnType(toBeEdited.txnType);
         }
-    }, [props.toBeEdited ])
+    }, [toBeEdited ])
     
 
     return (
