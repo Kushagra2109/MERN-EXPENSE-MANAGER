@@ -1,25 +1,22 @@
 import React from 'react'
-import { useDispatch , useSelector } from 'react-redux';
-import {  deleteTxn , setToBeEditedTxn  } from '../redux/txnSlice/txnSlice';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTxn, setToBeEditedTxn, deleteTxn } from '../redux/txnSlice/txnSlice';
 
 function TxnTable() {
 
     const txns = useSelector((state) => state.transactions.txn);
-    console.log(txns)
+    console.log(txns, "txnssssss")
     const dispatch = useDispatch();
 
-    // const handleDelete = (txn) => {
-    //     props.handleDelete(txn);
-    // }
+    useEffect(() => {
+        dispatch(getTxn());
+    }, [])
 
-    //  const handleEdit = (txn) => {
-    //     props.handleEdit(txn);
-    //     // console.log(txn);
-    // }
 
     return (
         <>
-            {txns.length?
+            {txns.length ?
                 <table>
                     <thead>
                         <tr>
@@ -39,7 +36,7 @@ function TxnTable() {
                                 <td>{x.category}</td>
                                 <td className='desc'>{x.desc}</td>
                                 <td><button onClick={() => dispatch(setToBeEditedTxn(x))} className='edit-button green'>edit</button></td>
-                                <td><button onClick={() => dispatch(deleteTxn(x))} className='delete-button red' >delete</button></td>
+                                <td><button onClick={() => dispatch(deleteTxn(x._id))} className='delete-button red' >delete</button></td>
                             </tr>
                         ))}
                     </tbody>

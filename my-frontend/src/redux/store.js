@@ -1,8 +1,8 @@
-import {configureStore } from "@reduxjs/toolkit"
-import txnReducer from './txnSlice/txnSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import txnReducer from "./txnSlice/txnSlice";
 
 export const store = configureStore({
-    reducer: {
-        transactions : txnReducer,
-    }
-})
+  reducer: {
+    transactions: txnReducer,
+  },
+});

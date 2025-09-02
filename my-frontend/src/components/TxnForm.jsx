@@ -1,23 +1,24 @@
 import React from 'react'
-import {useForm } from 'react-hook-form';
-import { useState , useEffect} from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useForm } from 'react-hook-form';
+import { useState, useEffect } from 'react';
 import { addTxn, updateTxn } from '../redux/txnSlice/txnSlice';
-import { useDispatch , useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function TxnForm() {
     const toBeEdited = useSelector((state) => state.transactions.toBeEditedTxn);
     const dispatch = useDispatch();
-    
 
-    const { register, handleSubmit, setValue, reset ,formState: { errors } } = useForm({ defaultValues: { txnType: "EXPENSE"} });
+
+    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm({ defaultValues: { txnType: "EXPENSE" } });
     const onSubmit = (formValues) => {
-        if(formValues.id){
-            dispatch(updateTxn(formValues));
-        }else{
-            dispatch(addTxn({...formValues , id : uuidv4()}));
+        if (formValues._id) {
+            dispatch(updateTxn({ ...formValues }))
+            settxnType("EXPENSE");
+        } else {
+            dispatch(addTxn({ ...formValues }));
+            settxnType("EXPENSE");
         }
-        reset({txnType : "EXPENSE" , amount : "" , category : "" , desc: "" , id : ""})
+        reset({ txnType: "EXPENSE", amount: "", category: "", desc: "" })
     }
 
 
@@ -29,19 +30,20 @@ function TxnForm() {
     }
 
     useEffect(() => {
-        if(toBeEdited){
+        if (toBeEdited) {
             reset(toBeEdited)
             settxnType(toBeEdited.txnType);
         }
-    }, [toBeEdited ])
-    
+    }, [toBeEdited])
+
+
+
 
     return (
         <>
             <form action="" onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="">TRANSACTION:</label><br />
                 <input type="hidden" {...register("txnType")} />
-                {/* <button type='button' onClick={() => {settxnType(txnType === "EXPENSE"? "INCOME": "EXPENSE"); setValue("txnType" , txnType)} }>{txnType}</button> */}
                 <button className={txnType === "EXPENSE" ? "red toggle-button" : 'green toggle-button'} type="button" onClick={toggleTxnType}> {txnType}</button><br />
                 <label htmlFor="amt">Amount:</label><br />
                 <input type="number" {...register("amount", { min: { value: 1, message: "amount cannot be less than 1" }, required: { value: true, message: "amount cannot be empty" } })} /> <br />
@@ -58,9 +60,9 @@ function TxnForm() {
                 </select><br />
                 {errors.category && <p className='errors'>{errors.category.message}</p>}
                 <label htmlFor="">Description</label><br />
-                <input  type="text" {...register("desc", { required: false })} /><br />
+                <input type="text" {...register("desc", { required: false })} /><br />
                 <button className='submitButton' type='submit'>submit</button>
-                
+
             </form>
         </>
     )
