@@ -1,9 +1,10 @@
 import './App.css'
 import NavBar from './components/NavBar'
 import { Outlet } from 'react-router-dom';
+import useAuth from './Hooks/UseAuth';
 
-function App() {
-
+function Layout() {
+  useAuth();
   return (
     <>
       <NavBar />
@@ -12,4 +13,4 @@ function App() {
   )
 }
 
-export default App
+export default Layout

@@ -1,0 +1,82 @@
+/* General Page Styling */
+.landing-page {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+  padding: 80px 0;
+  min-height: 90vh;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero-title span {
+  color: #ffdf5d;
+}
+
+.hero-subtitle {
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+.hero-buttons .btn {
+  margin-right: 15px;
+}
+
+.hero-img {
+  max-width: 100%;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating Image Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Features Section */
+.features h2 {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: #00c6ff;
+  margin-bottom: 15px;
+}
+
+/* CTA Section */
+.cta {
+  background: #f8f9fa;
+  padding: 60px 20px;
+}
+
+.cta h2 {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.cta p {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+}
