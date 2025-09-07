@@ -1,8 +1,12 @@
 import React from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+import PieChartt from './PieChartt'
 
 function Overview() {
   return (
-    <div>Overview</div>
+    <>
+      <PieChartt />
+    </>
   )
 }
 
