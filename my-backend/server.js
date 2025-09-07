@@ -42,6 +42,7 @@ const mongoSchema = new mongoose.Schema({
     category : String,
     desc : String,
     user : mongoose.Schema.Types.ObjectId,
+    date : {type : Date , default : Date.now},
 })
 
 const txns = mongoose.model("transactions" , mongoSchema);

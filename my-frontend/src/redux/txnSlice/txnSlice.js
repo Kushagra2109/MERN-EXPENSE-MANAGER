@@ -46,11 +46,24 @@ export const filtertxns = (state) => {
   if (state.transactions.filter === 'all'){
     return state.transactions.txn;
   }
+  if(state.transactions.filter === 'INCOME' || state.transactions.filter === "EXPENSE"){
+    return state.transactions.txn.filter((x) => {
+      return x.txnType === state.transactions.filter;
+    })
+  }
   return state.transactions.txn.filter((x) => {
     return x.category === state.transactions.filter
   })
 }
 ///////////////////////////////////
+
+////// txntype filter 
+// export const txnTypeFilter = (state) => {
+//   if (state.transactions.txnTypee === 'all'){
+//     return state.transactions.txn;
+//   }
+    
+// }
 
 export const txnSlice = createSlice({
   name: "transactions",
@@ -59,7 +72,7 @@ export const txnSlice = createSlice({
     toBeEditedTxn: null,
     status: null,
     filter : "all",
-    filtereddata : []
+    txnTypee : "all",
   },
   _extraReducers: (builder) => {
     builder.addCase(addTxn.fulfilled, (state, action) => {
@@ -113,6 +126,10 @@ export const txnSlice = createSlice({
       console.log('setfiter se' , action.payload)
       state.filter = action.payload
     },
+    // settxnType : (state, action) => {
+    //   console.log('setfiter se' , action.payload)
+    //   state.txnTypee = action.payload
+    // },
     // filtertxns : (state, action) =>{
     //   if(action.payload === "all"){
     //     state.filtereddata = state.txn;

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTxn, setToBeEditedTxn, deleteTxn ,filtertxns  ,setfilter} from '../redux/txnSlice/txnSlice';
+import { getTxn, setToBeEditedTxn, deleteTxn ,filtertxns  } from '../redux/txnSlice/txnSlice';
 
 function TxnTable() {
     useEffect(() => {
