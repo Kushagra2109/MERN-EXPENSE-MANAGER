@@ -1,151 +1,417 @@
-.red {
+/* Original styles maintained for compatibility */
+.red{
     background-color: #ef4444;
 }
-
-.green {
-    background-color: #22c55e; /* brighter green */
+.green{
+    background-color: green;
 }
-
-.toggle-button {
+.toggle-button{
     color: white;
     border: none;
-    border-radius: 4px; /* smoother rounded corners */
-    padding: 8px 12px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
+    border-radius: 1px;
 }
-
-.toggle-button:hover {
-    opacity: 0.9;
-}
-
-.errors {
+.errors{
     color: red;
-    font-size: 14px;
-    margin-top: 4px;
 }
-
-table {
+table{
     width: 100%;
-    border-collapse: collapse;
 }
-
-th, td {
-    border: 1px solid #e5e7eb; /* lighter border */
-    padding: 8px 12px;
+th , td{
+    border: 1px solid black;
+    padding: 3px  4px;
     text-align: center;
-    vertical-align: middle;
 }
-
-th {
-    font-size: 16px;
+th{
+    font-size: 17px;
     color: white;
-    background-color: #1f2937; /* dark gray */
+    background-color: black;
 }
-
-.desc {
-    text-align: left;
+.desc{
+    text-align: unset;
 }
-
-td {
+td{
     font-size: 15px;
     font-weight: 500;
 }
-
-.table-txnType {
+.table-txnType{
     color: white;
-    font-weight: 600;
-    text-transform: uppercase;
 }
-
-.row {
+.row{
     margin-top: 100px;
 }
-
-input {
+input{
     width: 100%;
-    padding: 8px 10px;
-    font-size: 16px;
+    padding-inline: 5px;
+    padding-block: 4px;
+    font-size: 18px;
     outline: none;
-    border: 1px solid #d1d5db;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
+    border: none;
+    border-bottom: 3px solid #3b82f6 ;
+    border-radius: 3px;
 }
-
-input:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+input:hover{
+    outline: none;
 }
-
-label {
-    font-size: 16px;
-    margin-top: 12px;
-    margin-bottom: 6px;
-    font-weight: 500;
+label{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 7px;
 }
-
-select {
-    font-size: 16px;
+select{
+    font-size: 20px;
     border: none;
     outline: none;
     background-color: #3b82f6;
-    padding: 8px 12px;
+    padding-block: 5px;
     border-radius: 4px;
     color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
-
-select:hover {
-    background-color: #2563eb;
-}
-
-option {
+option{
     background-color: white;
     color: black;
     border: none;
     outline: none;
 }
-
-.submitButton {
-    margin-top: 20px;
-    width: 100%;
+.submitButton{
+    margin-top: 30px;
+    width: 70%;
+    margin-inline: auto;
     display: block;
     border: none;
-    padding: 12px 0;
-    font-size: 16px;
+    padding-block: 10px ;
+    font-size: 18px;
     font-weight: 500;
     background-color: #3b82f6;
     border-radius: 4px;
     color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
-.submitButton:hover {
-    background-color: #2563eb;
-    transform: translateY(-1px);
+form{
+    background-color: rgb(255, 255, 255);
+    padding-inline: 5%;
+    padding-bottom: 40px;
+    border: 2px solid #636364;
+    border-radius: 5px;
 }
-
-form {
-    background-color: #ffffff;
-    padding: 20px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.edit-button,
-.delete-button {
+.edit-button , .delete-button {
     width: 100%;
     height: 100%;
     color: white;
     font-weight: 500;
-    border-radius: 4px;
-    padding: 4px 8px;
-    transition: opacity 0.2s ease;
 }
 
-.edit-button:hover,
+/* Simple Enhanced Styles */
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+}
+
+.dashboard-header h2 {
+    color: #333;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Form Styles */
+.form-wrapper {
+    background: white;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-wrapper h4 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.simple-form {
+    background: none;
+    padding: 0;
+    border: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-input:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
+.form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    color: #333;
+}
+
+.form-select:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
+.toggle-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.toggle-btn.expense {
+    background-color: #ef4444;
+    color: white;
+}
+
+.toggle-btn.income {
+    background-color: #10b981;
+    color: white;
+}
+
+.error-msg {
+    color: #ef4444;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #2563eb;
+}
+
+/* Filter Section */
+.filter-section {
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filter-section h5 {
+    margin: 0 0 15px 0;
+    color: #333;
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+    color: #333;
+    font-size: 14px;
+}
+
+.filter-select:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
+/* Table Styles */
+.table-wrapper {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.table-header {
+    padding: 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-header h5 {
+    margin: 0;
+    color: #333;
+}
+
+.simple-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.simple-table th,
+.simple-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+.simple-table th {
+    background: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.simple-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.expense-text {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.income-text {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.desc-cell {
+    text-align: left;
+    color: #666;
+}
+
+.expense-amount {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.income-amount {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.action-cell {
+    padding: 8px;
+}
+
+.edit-button, .delete-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.edit-button {
+    background: #3b82f6;
+    color: white;
+}
+
+.edit-button:hover {
+    background: #2563eb;
+}
+
+.delete-button {
+    background: #ef4444;
+    color: white;
+}
+
 .delete-button:hover {
-    opacity: 0.85;
+    background: #dc2626;
+}
+
+.total-row {
+    background: #f8f9fa;
+    font-weight: 700;
+    border-top: 2px solid #ddd;
+}
+
+.profit {
+    color: #16a34a;
+}
+
+.loss {
+    color: #dc2626;
+}
+
+.profit-amount {
+    color: #16a34a;
+}
+
+.loss-amount {
+    color: #dc2626;
+}
+
+/* Empty State */
+.no-data {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.no-data h5 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.no-data p {
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+    }
+    
+    .filter-select {
+        width: 100%;
+    }
+    
+    .simple-table th,
+    .simple-table td {
+        padding: 8px 4px;
+        font-size: 12px;
+    }
+    
+    .form-wrapper {
+        padding: 20px 15px;
+    }
 }
