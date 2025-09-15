@@ -3,11 +3,11 @@ import axios from "axios";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import { useDispatch, useSelector } from 'react-redux';
 import { getTxn } from "../redux/txnSlice/txnSlice";
-import { Container , Row , Col } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 
 function PieChartt() {
-    const dispatch = useDispatch();
-    const transactions = useSelector(state => state.transactions.txn) 
+  const dispatch = useDispatch();
+  const transactions = useSelector(state => state.transactions.txn)
 
   useEffect(() => {
     dispatch(getTxn());
@@ -17,12 +17,12 @@ function PieChartt() {
     const categoryTotals = {};
 
     transactions.forEach(txn => {
-      if(txn.txnType === "EXPENSE") {return}
+      if (txn.txnType === "EXPENSE") { return }
       const cat = txn.category || "Uncategorized";
       categoryTotals[cat] = (categoryTotals[cat] || 0) + txn.amount;
     });
 
-    
+
 
     return Object.keys(categoryTotals).map(cat => ({
       name: cat,
@@ -35,12 +35,12 @@ function PieChartt() {
     const categoryTotals = {};
 
     transactions.forEach(txn => {
-      if(txn.txnType === "INCOME") {return}
+      if (txn.txnType === "INCOME") { return }
       const cat = txn.category || "Uncategorized";
       categoryTotals[cat] = (categoryTotals[cat] || 0) + txn.amount;
     });
 
-    
+
 
     return Object.keys(categoryTotals).map(cat => ({
       name: cat,
@@ -52,54 +52,54 @@ function PieChartt() {
 
   return (
     <>
-    <Container>
-      <Row>
-        <Col lg={6} >
-          <h2>Expense by Category</h2>
-          <PieChart width={600} height={400}>
-            <Pie
-              data={pieDataForExpenses}
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              outerRadius={125}
-              dataKey="value"
-              label={({ name, percent }) =>
-                `${name} ${(percent * 100).toFixed(0)}%`
-              }
-            >
-              {pieDataForExpenses.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
-        </Col>
-          <Col lg= {6}>
+      <Container>
+        <Row>
+          <Col lg={6} >
+            <h2>Expense by Category</h2>
+            <PieChart width={600} height={400}>
+              <Pie
+                data={pieDataForExpenses}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                outerRadius={125}
+                dataKey="value"
+                label={({ name, percent }) =>
+                  `${name} ${(percent * 100).toFixed(0)}%`
+                }
+              >
+                {pieDataForExpenses.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </Col>
+          <Col lg={6}>
             <h2>Income by categories</h2>
             <PieChart width={600} height={400}>
-            <Pie
-              data={pieDataForIncomes}
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              outerRadius={125}
-              dataKey="value"
-              label={({ name, percent }) =>
-                `${name} ${(percent * 100).toFixed(0)}%`
-              }
-            >
-              {pieDataForIncomes.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
+              <Pie
+                data={pieDataForIncomes}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                outerRadius={125}
+                dataKey="value"
+                label={({ name, percent }) =>
+                  `${name} ${(percent * 100).toFixed(0)}%`
+                }
+              >
+                {pieDataForIncomes.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
           </Col>
-      </Row>
-    </Container>
+        </Row>
+      </Container>
     </>
   );
 }

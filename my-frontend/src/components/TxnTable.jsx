@@ -5,17 +5,13 @@ import { getTxn, setToBeEditedTxn, deleteTxn ,filtertxns  } from '../redux/txnSl
 
 function TxnTable() {
     useEffect(() => {
-        console.log("5 , beforemoutn of table")
         dispatch(getTxn());
-        console.log("6 , gettxn called")
     }, [])
 
-    console.log("7 , now that the tnxtable is loading ,before that")
-    const txns = useSelector(filtertxns);
+    const txns = useSelector(filtertxns) || [];
     // const txns = useSelector((state) => state.transactions.filtereddata);
     // const txns = useSelector((state) => state.transactions.txn);
     // console.log(txns, "txnssssss")
-    console.log("8 now txns should have been loaded", txns)
     const dispatch = useDispatch();
 
     const total = useMemo(() => {

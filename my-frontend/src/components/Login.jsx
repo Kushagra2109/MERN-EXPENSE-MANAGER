@@ -15,10 +15,8 @@ function Login() {
 
     const onSubmit = async (formValues) => {
         const resultAction = await dispatch(userLogin(formValues));
-        console.log("1 , starting on loggin button")
 
         if (userLogin.fulfilled.match(resultAction)) {
-            console.log(" 4 enter navigate")
             navigate('/dashboard');
         } else {
             alert("Invalid username or password");

@@ -20,7 +20,7 @@ function Dashboard() {
                     </Col>
 
                     <Col className="mt-sm-3 mt-lg-0 mt-3"  sm={12} md = {12} lg={{span : 7 , offset :1}}  >
-                    <select className="mb-5" onChange={(e) => {console.log(e.target.value); dispatch(setfilter(e.target.value))}} name="" id="">
+                    <select className="mb-5" onChange={(e) => {dispatch(setfilter(e.target.value))}} name="" id="">
                         <option >all</option>
                         <option value="Food">Food</option>
                         <option value="Rent">Rent</option>
@@ -29,7 +29,7 @@ function Dashboard() {
                         <option value="Bills">Bills</option>
                         <option value="Personel">Personel</option>
                     </select>
-                    <select className="mb-5 ms-2" onChange={(e) => {console.log("p" , e.target.value);dispatch(setfilter(e.target.value))}} >
+                    <select className="mb-5 ms-2" onChange={(e) => {dispatch(setfilter(e.target.value))}} >
                             <option value="all">all</option>
                             <option value="EXPENSE">EXPENSE</option>
                             <option value="INCOME">INCOME</option>

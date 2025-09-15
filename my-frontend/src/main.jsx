@@ -10,6 +10,7 @@ import { store } from './redux/store.js';
 import Register from './components/Register.jsx';
 import Login from './components/Login.jsx';
 import HomePage from './components/HomePage.jsx';
+import { ToastContainer } from 'react-toastify';
 
 const router = createBrowserRouter([
   {
@@ -29,5 +30,6 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <RouterProvider router={router} />
+    <ToastContainer position='top-right' autoClose = {3000} pauseOnHover draggable/>
   </Provider>
 )
