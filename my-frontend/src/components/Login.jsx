@@ -30,13 +30,14 @@ function Login() {
                 <Row>
                     <Col sm={12} md={{ span: 8, offset: 2 }} lg={{ span: 4, offset: 4 }}>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <h2 className='text-center'>Login</h2>
+                            <h2 className='text-center mt-3'>Login</h2>
                             <label > username</label>
                             <input type="text" {...register("username", { required: true })} />
                             <label >password</label>
                             <input type="password" {...register("password", { required: true })} />
                             <button className='submitButton' type='submit'>Login</button>
                             <a className='text-end d-block mt-4 cursor-pointer' onClick={() => { navigate("/register") }}>Not registered? Register here!</a>
+                            <a className='text-end d-block mt-4 cursor-pointer' onClick={() => { navigate("/forgotPassword") }}>Forgot Password? Click Here!</a>
                         </form>
                     </Col>
                 </Row>

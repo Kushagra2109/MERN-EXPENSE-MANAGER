@@ -10,7 +10,9 @@ import { store } from './redux/store.js';
 import Register from './components/Register.jsx';
 import Login from './components/Login.jsx';
 import HomePage from './components/HomePage.jsx';
+import ForgotPasswordForm from './components/ForgotPasswordForm.jsx';
 import { ToastContainer } from 'react-toastify';
+import ResetPassword from './components/ResetPassword.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,8 @@ const router = createBrowserRouter([
       { path: '/overview', element: <Overview /> },
       {path : '/register' , element : <Register />},
       {path : '/login' , element : <Login />},
+      {path : '/forgotpassword' , element : <ForgotPasswordForm />},
+      {path : '/resetpassword/:token' , element : <ResetPassword />},
     ]
   },
   

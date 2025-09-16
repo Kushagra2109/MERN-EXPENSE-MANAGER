@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 // import bodyParser from 'body-parser';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import nodemailer from "nodemailer"
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -97,7 +98,7 @@ const user = mongoose.model("users", UserSchema);
 
 app.post("/registerUser", async (req, res) => {
   try {
-    const exists = await user.findOne({ username: req.body.username });
+    const exists = await user.findOne({ email: req.body.email });
     if (exists) {
       return res.status(409).json("user already exits");
     }
@@ -105,6 +106,7 @@ app.post("/registerUser", async (req, res) => {
     const hashedPass = await bcrypt.hash(req.body.password, 10);
 
     const data = await user.create({
+      email : req.body.email,
       username: req.body.username,
       password: hashedPass,
     });
@@ -135,3 +137,72 @@ app.post("/loginuser", async (req, res) => {
   );
   res.json({ token: token });
 });
+
+
+app.post('/forgotPassword' , async (req , res) => {
+    const resultUser = await user.findOne({email : req.body.email});
+
+    if(!resultUser){
+        res.status(404).json({message : "This email is not associated with a Registered user!"})
+    }
+
+    const token  = jwt.sign({id : resultUser._id} , process.env.RESET_CODE, {expiresIn : "15m"});
+
+    const resetURL = `http://localhost:5173/resetpassword/${token}`;
+
+    const transporter = nodemailer.createTransport({
+      service : 'gmail', 
+      auth : {
+        user : process.env.GMAIL,
+        pass : process.env.GMAIL_PASSWORD
+      }
+    })
+
+    await transporter.sendMail({
+      from : process.env.GMAIL,
+      to : req.body.email,
+      subject : "PASSWORD RESET LINK FROM KS EXPENSE MANAGER",
+      html : `<h3>Reset Your Password</h3>
+      <p>You can reset your password using the link below:</p>
+      <a href= ${resetURL} target="_blank">${resetURL}</a>
+      <p>This link is valid only for 15 minutes.</p>`
+    })
+    console.log("success")
+    res.status(200).json({message : "password reset link sent to your email!!"})
+
+    
+})
+
+app.get("/reset-password/:token", async (req , res) => {
+  try{
+    const decoded =  jwt.verify(req.params.token , process.env.RESET_CODE)
+    res.status(200).json({message :"token valid"})
+  }
+  catch(err){
+    res.status(500).json({message : "token invalid!"})
+  }
+})
+
+app.post(`/updatePassword/:token` , async (req , res) => {
+  try{
+  const updatedPassword = req.body.password;
+  const token = req.params.token;
+
+  const decode = jwt.verify(token , process.env.RESET_CODE)
+  const userToBeUpdated = await user.findById(decode.id);
+
+  if(!userToBeUpdated){
+    return res.status(404).json({message : "User not found!"})
+  }
+
+  const newHashedPassword = await bcrypt.hash(updatedPassword , 10);
+
+  userToBeUpdated.password = newHashedPassword;
+  await userToBeUpdated.save();
+
+  res.status(200).json({message : "Password Successfully updated!!"})
+}
+catch(err){
+  res.status(500).json({message : "Something went wrong!"})
+}
+})
