@@ -148,7 +148,8 @@ app.post('/forgotPassword' , async (req , res) => {
 
     const token  = jwt.sign({id : resultUser._id} , process.env.RESET_CODE, {expiresIn : "15m"});
 
-    const resetURL = `http://localhost:5173/resetpassword/${token}`;
+    const frontend_uri = process.env.FRONTEND_URI;
+    const resetURL = `${frontend_uri}/resetpassword/${token}`;
 
     const transporter = nodemailer.createTransport({
       service : 'gmail', 
