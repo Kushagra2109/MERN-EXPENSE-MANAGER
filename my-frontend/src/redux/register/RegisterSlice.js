@@ -2,8 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 // import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import dotenv from "dotenv";
 
-const api_url = "http://localhost:4000";
+dotenv.config();
+
+const api_url = process.env.API_URI;
 // const navigate = useNavigate()
 
 export const userRegistration = createAsyncThunk(

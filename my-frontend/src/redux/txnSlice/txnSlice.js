@@ -1,9 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import {toast} from "react-toastify"
+import {toast} from "react-toastify";
+import dotenv from "dotenv";
 
-const api_url = "http://localhost:4000";
+dotenv.config();
 
+const api_url = process.env.API_URI;
 ///////////////// post / add api
 export const addTxn = createAsyncThunk("addTxn", async (txn) => {
   try {
