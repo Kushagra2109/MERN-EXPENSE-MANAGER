@@ -21,7 +21,7 @@ function ForgotPasswordForm() {
             <form action="" onSubmit={handleSubmit(onSubmit)}>
               <h2 className='text-center'>Reset Password</h2>
               <label >Email</label>
-              <input type="text" {...register("email" , {required : {value: true, message :"Email cannot be empty"} , pattern : {value : /^[^\s@]+@[^\s@]+\.[^\s@]+$/ , message : "Invalid Email Address"}})}/>
+              <input type="text" {...register("email" , {required : {value: true, message :"Email cannot be empty"}, setValueAs : (v) => v.trim() , pattern : {value : /^[^\s@]+@[^\s@]+\.[^\s@]+$/ , message : "Invalid Email Address"}})}/>
               <button className='submitButton' type='submit'>Proceed</button>
             </form>
           </Col>

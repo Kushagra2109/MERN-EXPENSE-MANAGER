@@ -146,4 +146,7 @@ form{
     color: #dc2626 !important; /* darker red */
 }
 
+.links{
+    cursor: pointer;
+}
 

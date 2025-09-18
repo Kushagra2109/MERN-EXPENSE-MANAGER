@@ -43,7 +43,7 @@ function ResetPassword() {
             <form action="" onSubmit={handleSubmit(onSubmit)}>
               <h2 className='text-center'>Enter New Password</h2>
               <label >Password</label>
-              <input type="password" {...register("password" , {required : {value: true, message :"New Password cannot be empty"} , min : {value: 4 , message : "Password cannot be less than 4 characters"}})}/>
+              <input type="password" {...register("password" , {required : {value: true, message :"New Password cannot be empty"}, setValueAs : (v) => v.trim()  , min : {value: 4 , message : "Password cannot be less than 4 characters"}})}/>
               <button className='submitButton' type='submit'>Set</button>
             </form>
           </Col>

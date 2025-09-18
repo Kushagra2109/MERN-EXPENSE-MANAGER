@@ -32,12 +32,12 @@ function Login() {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <h2 className='text-center mt-3'>Login</h2>
                             <label > username</label>
-                            <input type="text" {...register("username", { required: true })} />
+                            <input type="text" {...register("username" ,{ required: true , setValueAs : (v) => v.trim() })} />
                             <label >password</label>
-                            <input type="password" {...register("password", { required: true })} />
+                            <input type="password" {...register("password", { required: true ,setValueAs : (v) => v.trim() })} />
                             <button className='submitButton' type='submit'>Login</button>
-                            <a className='text-end d-block mt-4 cursor-pointer' onClick={() => { navigate("/register") }}>Not registered? Register here!</a>
-                            <a className='text-end d-block mt-4 cursor-pointer' onClick={() => { navigate("/forgotPassword") }}>Forgot Password? Click Here!</a>
+                            <a className='text-end d-block mt-4 links' onClick={() => { navigate("/register") }}>Not registered? Register here!</a>
+                            <a className='text-end d-block mt-4 links' onClick={() => { navigate("/forgotPassword") }}>Forgot Password? Click Here!</a>
                         </form>
                     </Col>
                 </Row>

@@ -15,7 +15,7 @@ const useAuth = () => {
       location.pathname.startsWith("/resetpassword");
 
     if (token && isPublic) {
-      navigate(-1);
+      navigate("/dashboard");
     }
 
     if (!token && !isPublic) {
